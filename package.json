@@ -10,7 +10,8 @@
     "sync-log": "node scripts/sync-log.mjs",
     "sync-datasets": "node scripts/sync-datasets.mjs",
     "sync-scripts": "node scripts/sync-scripts.mjs",
-    "sync": "npm run sync-log && npm run sync-datasets && npm run sync-scripts"
+    "sync": "npm run sync-log && npm run sync-datasets && npm run sync-scripts",
+    "add-problem": "node scripts/add-problem.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",

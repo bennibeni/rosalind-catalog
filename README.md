@@ -121,32 +121,34 @@ npm run sync-scripts
 
 ## Aggiungere un nuovo problema
 
-Basta aggiungere un nuovo file `.md` in `content/`, seguendo lo stesso
-formato degli altri (vedi `content/orf.md` come esempio):
-
-```
-# Titolo (Rosalind ID: XXX)
-
-Fonte: https://rosalind.info/problems/xxx/
-
-Argomenti Rosalind: Argomento1, Argomento2
-
-## Descrizione
-...
-## Given
-...
-## Return
-...
-## Sample Dataset
-```
-...
-```
-## Sample Output
-```
-...
-```
+```bash
+npm run add-problem -- "Nome Esatto Cartella"
+npm run sync
+npm run build
 ```
 
-Il catalogo e la pagina di dettaglio si generano automaticamente al
-prossimo `npm run build` (o a caldo in `npm run dev`) — non serve
-toccare nessun altro file.
+`add-problem` legge `enunciato.md` dalla cartella indicata (assume che
+`rosalind.info` sia una cartella sorella, come per gli altri script di
+sync — altrimenti passa il percorso come secondo argomento), lo copia in
+`content/<slug>.md`, e registra la cartella in `lib/folderToSlug.json`
+— quest'ultimo passo è quello facile da dimenticare se lo fai a mano:
+senza di esso "La mia esecuzione" (input/output/esecuzione nel browser)
+non troverà mai i dati di quel problema, anche se l'enunciato appare
+regolarmente nel catalogo.
+
+`npm run sync` dopo `add-problem` collega dataset, output registrato
+(se già presente in `run_log.txt`) e script Python del nuovo problema.
+
+<details>
+<summary>Farlo a mano, senza <code>add-problem</code></summary>
+
+1. Copia `enunciato.md` in `content/<slug>.md` (usa l'ID Rosalind in
+   minuscolo come slug, es. `content/newp.md`).
+2. Aggiungi una riga in `lib/folderToSlug.json`:
+   `"Nome Esatto Cartella": "slug"` (la chiave deve combaciare
+   esattamente col nome della cartella dentro `rosalind.info`, così
+   com'è scritto negli header di `run_log.txt`).
+3. `npm run sync` e poi `npm run build`.
+
+</details>
+

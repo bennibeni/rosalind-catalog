@@ -119,6 +119,37 @@ npm run sync-scripts
 (incluso automaticamente in `npm run sync`, insieme a `sync-log` e
 `sync-datasets`)
 
+## Soluzioni JavaScript indipendenti (opzionale)
+
+Alcuni problemi possono avere, oltre alla soluzione Python, una
+**soluzione JavaScript indipendente** — non una trascrizione dello
+script Python da tenere sincronizzata, ma codice scritto apposta,
+eseguito nativamente nel browser senza scaricare alcun runtime (a
+differenza di Pyodide).
+
+Per aggiungerne una a un problema: crea
+`public/js-solutions/<slug>.mjs` con questa forma:
+
+```js
+export default function solve(datasetText) {
+  // ... logica ...
+  return "output testuale";
+}
+```
+
+Compare automaticamente nella pagina di dettaglio del problema, con lo
+stesso badge di corrispondenza contro `run_log.txt` usato per Python.
+
+**Attenzione ai numeri grandi**: JavaScript non ha interi a precisione
+arbitraria come Python — oltre `Number.MAX_SAFE_INTEGER`
+(9007199254740991) i calcoli con `Number` perdono precisione
+silenziosamente (nessun errore, solo un risultato leggermente sbagliato).
+Per problemi che possono produrre numeri grandi (es. i vari Fibonacci)
+usa `BigInt`. Vedi `public/js-solutions/fibd.mjs` come esempio reale: con
+`Number` normale produce `60994035076020920` invece del valore corretto
+`60994035076020903` — sbagliato di 17, un errore facile da non notare a
+occhio.
+
 ## Aggiungere un nuovo problema
 
 ```bash

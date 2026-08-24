@@ -4,10 +4,12 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Barcode from "../../components/Barcode";
 import RunInBrowser from "../../components/RunInBrowser";
+import RunJsInBrowser from "../../components/RunJsInBrowser";
 import { getAllProblems, getProblemBySlug } from "@/lib/problems";
 import { getMyOutputForSlug, getRunLog } from "@/lib/runLog";
 import { getMyInputForSlug, myDatasetsDirExists } from "@/lib/myInput";
 import { getMyScriptForSlug, myScriptsDirExists } from "@/lib/myScript";
+import { getJsSolutionForSlug } from "@/lib/jsSolution";
 
 export function generateStaticParams() {
   return getAllProblems().map((p) => ({ slug: p.slug }));
@@ -44,6 +46,7 @@ export default async function ProblemDetailPage({ params }) {
   const datasetsDirExists = myDatasetsDirExists();
   const myScript = getMyScriptForSlug(slug);
   const scriptsDirExists = myScriptsDirExists();
+  const jsSolution = getJsSolutionForSlug(slug);
   const hasAnyExecutionData = myOutput != null || myInput != null || myScript != null;
   const hasNeitherSource = !logExists && !datasetsDirExists && !scriptsDirExists;
 
@@ -241,6 +244,26 @@ export default async function ProblemDetailPage({ params }) {
             per collegare dataset, output registrato ed esecuzione dal
             vivo nel browser a questa pagina.
           </p>
+        </section>
+      ) : null}
+
+      {/* Soluzione JS indipendente (non una trascrizione del Python) -
+          esiste solo per un sottoinsieme di problemi, scelti apposta.
+          Vive fuori dal pannello ambra "La mia esecuzione" perché è
+          codice del progetto (come content/*.md), non dato personale
+          sincronizzato da rosalind.info - resta visibile anche se
+          data/ non è mai stato collegato. */}
+      {jsSolution ? (
+        <section className="mt-8 rounded-2xl border border-band-dim/40 bg-panel p-6">
+          <h2 className="font-mono-lab text-xs uppercase tracking-[0.14em] text-band">
+            Soluzione JavaScript
+          </h2>
+          <RunJsInBrowser
+            modulePath={jsSolution.modulePath}
+            source={jsSolution.source}
+            inputContent={myScript?.inputContent ?? null}
+            expectedOutput={myOutput?.output ?? null}
+          />
         </section>
       ) : null}
     </main>

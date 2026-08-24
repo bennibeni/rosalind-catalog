@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------
+   Design tokens.
+
+   Palette reference: an agarose gel under a UV transilluminator - DNA
+   bands glowing cyan-green against a deep indigo-black background, with
+   a warm amber accent for anything "confirmed/solved" (restriction-enzyme
+   amber, not a generic warning color). Deliberately not the cream+serif
+   +terracotta or near-black+single-neon-accent defaults: two distinct
+   accents, and a background that reads as deep teal-slate rather than
+   flat black.
+--------------------------------------------------------------------- */
+@theme {
+  --color-void: #0b1622;
+  --color-panel: #101f2e;
+  --color-panel-raised: #142839;
+  --color-ink: #e7ede7;
+  --color-ink-dim: #9fb0ac;
+  --color-band: #7fe0c0;
+  --color-band-dim: #4d8f7c;
+  --color-amber: #e8a857;
+  --color-line: #1e3346;
+
+  --font-mono-lab: var(--font-plex-mono);
+  --font-serif-lab: var(--font-source-serif);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-serif-lab), ui-serif, Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-band);
+  color: var(--color-void);
+}
+
+/* Reduced motion: no gradient/opacity transitions for anyone who asked
+   the OS not to animate. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Prose styling for the rendered markdown body (react-markdown output) */
+.enunciato-body h2 {
+  font-family: var(--font-mono-lab), ui-monospace, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-band);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.enunciato-body h2:first-child {
+  margin-top: 0;
+}
+.enunciato-body p {
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  color: var(--color-ink);
+}
+.enunciato-body code {
+  font-family: var(--font-mono-lab), ui-monospace, monospace;
+  background: var(--color-panel-raised);
+  color: var(--color-band);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+.enunciato-body pre {
+  font-family: var(--font-mono-lab), ui-monospace, monospace;
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.enunciato-body pre code {
+  background: none;
+  padding: 0;
+  color: var(--color-ink);
+}
+.enunciato-body strong {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+.enunciato-body ul,
+.enunciato-body ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+.enunciato-body li {
+  margin-bottom: 0.35rem;
+  line-height: 1.7;
+}
+
+.projects-footer {
+  box-sizing: border-box;
+  width: min(680px, 100%);
+  margin: 18px auto 0;
+  padding: 14px 18px;
+  border: 1px solid #b9cee8;
+  border-radius: 8px;
+  background: white;
+}
+
+.projects-footer a {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.projects-footer a:hover,
+.projects-footer a:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+}

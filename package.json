@@ -1,0 +1,26 @@
+{
+  "name": "rosalind-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sync-log": "node scripts/sync-log.mjs",
+    "sync-datasets": "node scripts/sync-datasets.mjs",
+    "sync-scripts": "node scripts/sync-scripts.mjs",
+    "sync": "npm run sync-log && npm run sync-datasets && npm run sync-scripts"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

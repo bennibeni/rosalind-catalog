@@ -1,0 +1,218 @@
+{
+  "contest-1-example-a-b": {
+    "inputFilename": "input.txt",
+    "notRunnableReason": null
+  },
+  "contest-2-example-finding-a-motif-in-dna": {
+    "inputFilename": "input.txt",
+    "notRunnableReason": null
+  },
+  "iev": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "prtm": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "cat": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "revc": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "tree": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "ini4": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "cons": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "dna": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "inod": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "hamm": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "sset": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "pdst": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "nwck": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "perm": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "sign": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "lexf": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "corr": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "subs": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "mprt": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": "Usa \"regex\", non disponibile (o inaffidabile per rete/CORS) in un runtime Python nel browser."
+  },
+  "lcsm": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "sseq": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "long": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "gc": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "lia": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "mrna": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "trie": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "prob": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "seto": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "revp": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "lgis": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "rstr": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "iprb": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "fibd": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "motz": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "orf": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "lexv": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "grph": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "pper": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "pmch": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "splc": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "fib": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "rabbits-and-recurrence-relations-2": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "rear": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "sort": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "kmp": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "ini3": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "rna": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "tran": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "prot": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "ini2": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "ini5": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  },
+  "kmer": {
+    "inputFilename": "dataset.txt",
+    "notRunnableReason": null
+  }
+}

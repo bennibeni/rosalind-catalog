@@ -111,25 +111,34 @@ body {
   line-height: 1.7;
 }
 
+/* Rimanda al portfolio generale (links-page-bennibeni) - riusa i token
+   di questo tema (gel-elettroforesi) invece di --accent/--ink, che non
+   esistono qui: quelle variabili appartengono a un altro progetto con
+   tema chiaro, da cui il blocco era stato copiato. */
 .projects-footer {
   box-sizing: border-box;
   width: min(680px, 100%);
-  margin: 18px auto 0;
-  padding: 14px 18px;
-  border: 1px solid #b9cee8;
-  border-radius: 8px;
-  background: white;
+  margin: 3rem auto 0;
+  padding: 0.875rem 1.125rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  background: var(--color-panel);
 }
 
 .projects-footer a {
-  color: var(--accent);
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-family: var(--font-mono-lab), ui-monospace, monospace;
+  color: var(--color-band-dim);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
   text-decoration: none;
 }
 
 .projects-footer a:hover,
 .projects-footer a:focus-visible {
-  color: var(--ink);
+  color: var(--color-band);
   text-decoration: underline;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 4px;
 }

@@ -1,7 +1,6 @@
-import { getAllProblems, getProblemsGroupedByTopic } from "@/lib/problems";
 import Link from "next/link";
 import Barcode from "./components/Barcode";
-import "./globals.css";
+import { getAllProblems, getProblemsGroupedByTopic } from "@/lib/problems";
 
 export default function HomePage() {
   const total = getAllProblems().length;
@@ -20,9 +19,9 @@ export default function HomePage() {
         Una sequenza alla volta.
       </h1>
       <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-dim">
-        Ogni problema Rosalind risolto qui dentro ha il proprio enunciato, la
-        propria fonte, e un piccolo codice a barre molecolare che lo identifica
-        in modo univoco.
+        Ogni problema Rosalind risolto qui dentro ha il proprio enunciato,
+        la propria fonte, e un piccolo codice a barre molecolare che lo
+        identifica in modo univoco.
       </p>
 
       <Barcode seed="rosalind-catalog" length={40} className="mt-10 h-3" />
@@ -33,8 +32,9 @@ export default function HomePage() {
       >
         Sfoglia il catalogo &rarr;
       </Link>
+
       <footer className="projects-footer">
-        <a href="https://links-page-bennibeni.vercel.app/">← All projects</a>
+        <a href="https://links-page-bennibeni.vercel.app/">&larr; All projects</a>
       </footer>
     </main>
   );

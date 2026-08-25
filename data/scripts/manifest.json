@@ -177,7 +177,7 @@
   },
   "rear": {
     "inputFilename": "dataset.txt",
-    "notRunnableReason": null
+    "notRunnableReason": "BFS esaustivo su tutte le permutazioni di 10 elementi (3.628.800 nodi): non completa in tempi ragionevoli sotto Pyodide/WebAssembly. Usa la soluzione JavaScript qui sotto, che esegue lo stesso calcolo in un Web Worker (qualche minuto, ma senza bloccare la pagina)."
   },
   "sort": {
     "inputFilename": "dataset.txt",

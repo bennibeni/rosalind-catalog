@@ -37,6 +37,17 @@ function resolveFolderPath(root, folderKey) {
 // with a confusing ImportError or a CORS-blocked fetch in the browser.
 const UNSUPPORTED_IMPORT_RE = /^\s*(import|from)\s+(regex|requests|numpy|scipy|pandas)\b/m;
 
+// Alcuni script sono tecnicamente eseguibili sotto Pyodide (nessun
+// import non supportato) ma impraticabili nel browser per ragioni di
+// performance pura, non rilevabili da un semplice controllo sugli
+// import - qui documentate esplicitamente per slug, così il motivo
+// sopravvive ad ogni "npm run sync-scripts" invece di essere
+// sovrascritto a null. Aggiungere qui SOLO dopo aver verificato di
+// persona che l'esecuzione non completa in tempi ragionevoli.
+const REASON_OVERRIDE = {
+  rear: 'BFS esaustivo su tutte le permutazioni di 10 elementi (3.628.800 nodi): non completa in tempi ragionevoli sotto Pyodide/WebAssembly. Usa la soluzione JavaScript qui sotto, che esegue lo stesso calcolo in un Web Worker (qualche minuto, ma senza bloccare la pagina).',
+};
+
 const manifest = {};
 let copied = 0;
 let flagged = [];
@@ -64,9 +75,11 @@ for (const [folder, slug] of Object.entries(folderToSlug)) {
   }
 
   const unsupportedMatch = source.match(UNSUPPORTED_IMPORT_RE);
-  const notRunnableReason = unsupportedMatch
-    ? `Usa "${unsupportedMatch[2]}", non disponibile (o inaffidabile per rete/CORS) in un runtime Python nel browser.`
-    : null;
+  const notRunnableReason =
+    REASON_OVERRIDE[slug] ??
+    (unsupportedMatch
+      ? `Usa "${unsupportedMatch[2]}", non disponibile (o inaffidabile per rete/CORS) in un runtime Python nel browser.`
+      : null);
 
   manifest[slug] = { inputFilename, notRunnableReason };
   copied++;

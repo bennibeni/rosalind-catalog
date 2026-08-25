@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Barcode from "../../components/Barcode";
+import SolutionBadges from "../../components/SolutionBadges";
 import RunInBrowser from "../../components/RunInBrowser";
 import RunJsInBrowser from "../../components/RunJsInBrowser";
 import { getAllProblems, getProblemBySlug } from "@/lib/problems";
@@ -76,6 +77,7 @@ export default async function ProblemDetailPage({ params }) {
               Fuori dal set ufficiale Rosalind
             </span>
           ) : null}
+          <SolutionBadges hasPython={myScript != null} hasJs={jsSolution != null} />
         </div>
 
         <h1 className="mt-3 text-3xl font-semibold leading-tight text-ink sm:text-4xl">
@@ -263,6 +265,7 @@ export default async function ProblemDetailPage({ params }) {
             source={jsSolution.source}
             inputContent={myScript?.inputContent ?? null}
             expectedOutput={myOutput?.output ?? null}
+            note={jsSolution.note}
           />
         </section>
       ) : null}

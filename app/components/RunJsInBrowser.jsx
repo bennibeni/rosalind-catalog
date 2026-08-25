@@ -17,7 +17,7 @@ import { useRef, useState } from "react";
 // the same badge means the same thing regardless of which language solved
 // the problem.
 // ---------------------------------------------------------------------------
-export default function RunJsInBrowser({ modulePath, source, inputContent, expectedOutput }) {
+export default function RunJsInBrowser({ modulePath, source, inputContent, expectedOutput, note }) {
   const [status, setStatus] = useState("idle"); // idle | running | done | error
   const [output, setOutput] = useState("");
   const [elapsedMs, setElapsedMs] = useState(null);
@@ -75,6 +75,10 @@ export default function RunJsInBrowser({ modulePath, source, inputContent, expec
           {status === "running" ? "Eseguo…" : "Esegui ora"}
         </button>
       </div>
+
+      {note ? (
+        <p className="mt-2 text-xs leading-relaxed text-amber">{note}</p>
+      ) : null}
 
       {source ? (
         <details className="mt-3">

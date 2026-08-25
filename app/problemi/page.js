@@ -1,6 +1,9 @@
+import { getJsSolutionForSlug } from "@/lib/jsSolution";
+import { getMyScriptForSlug } from "@/lib/myScript";
+import { getAllProblems, getProblemsGroupedByTopic } from "@/lib/problems";
 import Link from "next/link";
 import Barcode from "../components/Barcode";
-import { getProblemsGroupedByTopic, getAllProblems } from "@/lib/problems";
+import SolutionBadges from "../components/SolutionBadges";
 
 export const metadata = {
   title: "Catalogo Rosalind",
@@ -20,10 +23,13 @@ export default function ProblemiIndexPage() {
           Catalogo Rosalind
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-dim">
-          Ogni voce riporta l&rsquo;enunciato originale del problema,
-          tradotto e classificato secondo la tassonomia ufficiale di
-          Rosalind. Le sezioni sono ordinate per argomento; un problema
-          multi-argomento compare in ciascuna delle sue categorie.
+          Ogni voce riporta l&rsquo;enunciato originale del problema, tradotto e
+          classificato secondo la tassonomia ufficiale di Rosalind. Le sezioni
+          sono ordinate per argomento;{" "}
+          <strong className="font-semibold text-ink">
+            un problema multi-argomento compare in ciascuna delle sue categorie
+          </strong>
+          .
         </p>
       </header>
 
@@ -40,31 +46,41 @@ export default function ProblemiIndexPage() {
             </div>
 
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {problems.map((p) => (
-                <li key={`${topic}-${p.slug}`}>
-                  <Link
-                    href={`/problemi/${p.slug}`}
-                    className="group flex h-full flex-col justify-between rounded-2xl border border-line bg-panel p-5 transition-colors hover:border-band-dim"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono-lab text-xs uppercase tracking-wider text-band">
-                          {p.rosalindId ?? p.slug}
-                        </span>
-                        {p.isExternalContest ? (
-                          <span className="font-mono-lab text-[10px] uppercase tracking-wider text-ink-dim">
-                            esterno
+              {problems.map((p) => {
+                const hasPython = getMyScriptForSlug(p.slug) != null;
+                const hasJs = getJsSolutionForSlug(p.slug) != null;
+                return (
+                  <li key={`${topic}-${p.slug}`}>
+                    <Link
+                      href={`/problemi/${p.slug}`}
+                      className="group flex h-full flex-col justify-between rounded-2xl border border-line bg-panel p-5 transition-colors hover:border-band-dim"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between">
+                          <span className="font-mono-lab text-xs uppercase tracking-wider text-band">
+                            {p.rosalindId ?? p.slug}
                           </span>
-                        ) : null}
+                          <div className="flex items-center gap-2">
+                            <SolutionBadges
+                              hasPython={hasPython}
+                              hasJs={hasJs}
+                            />
+                            {p.isExternalContest ? (
+                              <span className="font-mono-lab text-[10px] uppercase tracking-wider text-ink-dim">
+                                esterno
+                              </span>
+                            ) : null}
+                          </div>
+                        </div>
+                        <h3 className="mt-2 text-lg font-medium leading-snug text-ink group-hover:text-band">
+                          {p.title}
+                        </h3>
                       </div>
-                      <h3 className="mt-2 text-lg font-medium leading-snug text-ink group-hover:text-band">
-                        {p.title}
-                      </h3>
-                    </div>
-                    <Barcode seed={p.slug} length={16} className="mt-5 h-2" />
-                  </Link>
-                </li>
-              ))}
+                      <Barcode seed={p.slug} length={16} className="mt-5 h-2" />
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         ))}
